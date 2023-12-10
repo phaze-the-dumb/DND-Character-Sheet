@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+@font-face {
+  font-family: 'Ace Records';
+  src: url('https://cdn.phazed.xyz/dnd-assets/Ace Records.ttf') format(truetype);
+}
+
+.blackout{
+  background: #000a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+}
+
+.main-shadow{
+  background: url('https://cdn.phazed.xyz/dnd-assets/scroll-shadow.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #111;
+  background: url('https://cdn.phazed.xyz/dnd-assets/scroll.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 150px 0;
+  font-family: 'Ace Records';
+}
+
+.header{
+  font-size: 55px;
+  margin: 5px;
+  text-shadow: #000 0 0 2px;
+}
+
+.content{
+  display: inline-block;
+  width: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, #0000 0%, #000 5%, #000 95%, #0000 100%);
+}
+
+.content::-webkit-scrollbar{
+  display: none;
+}

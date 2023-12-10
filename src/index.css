@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  background: url('https://cdn.phazed.xyz/dnd-assets/woodentex.jpg');
+  background-size: 170%;
+  background-position: center;
+  background-attachment: fixed;
+}
