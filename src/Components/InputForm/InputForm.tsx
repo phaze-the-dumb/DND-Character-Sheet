@@ -102,6 +102,13 @@ let InputForm = () => {
         setIntelligenceThrow(data.SavingThrows.Intelligence);
         setWisdomThrow(data.SavingThrows.Wisdom);
         setCharismaThrow(data.SavingThrows.Charisma);
+        setStrengthThrowProficiency(data.SavingThrows.StrengthProficiency);
+        setDexterityThrowProficiency(data.SavingThrows.DexterityProficiency);
+        setConstitutionThrowProficiency(data.SavingThrows.ConstitutionProficiency);
+        setIntelligenceThrowProficiency(data.SavingThrows.IntelligenceProficiency);
+        setWisdomThrowProficiency(data.SavingThrows.WisdomProficiency);
+        setCharismaThrowProficiency(data.SavingThrows.CharismaProficiency);
+        setAttacksSpellCasting(data.AttacksSpellCasting.Others);
         // setOtherProficienciesLanguages(data.OtherProficienciesLanguages);
         // setEquipment(data.Equipment);
         // setMoney(data.Money);
@@ -176,12 +183,59 @@ let InputForm = () => {
   let [ weapon3AtkBonus, setWeapon3AtkBonus ] = createSignal(d.AttacksSpellCasting.Weapons[2].AtkBonus);
   let [ weapon3Damage, setWeapon3Damage ] = createSignal(d.AttacksSpellCasting.Weapons[2].Damage);
 
+  let [ attacksSpellCasting, setAttacksSpellCasting ] = createSignal(d.AttacksSpellCasting.Others);
+
   let [ strengthThrow, setStrengthThrow ] = createSignal(d.SavingThrows.Strength);
-  let [ dexterityThrow, setDexterityThrow ] = createSignal(d.Dexterity);
-  let [ constitutionThrow, setConstitutionThrow ] = createSignal(d.Constitution);
-  let [ intelligenceThrow, setIntelligenceThrow ] = createSignal(d.Intelligence);
-  let [ wisdomThrow, setWisdomThrow ] = createSignal(d.Wisdom);
-  let [ charismaThrow, setCharismaThrow ] = createSignal(d.Charisma);
+  let [ dexterityThrow, setDexterityThrow ] = createSignal(d.SavingThrows.Dexterity);
+  let [ constitutionThrow, setConstitutionThrow ] = createSignal(d.SavingThrows.Constitution);
+  let [ intelligenceThrow, setIntelligenceThrow ] = createSignal(d.SavingThrows.Intelligence);
+  let [ wisdomThrow, setWisdomThrow ] = createSignal(d.SavingThrows.Wisdom);
+  let [ charismaThrow, setCharismaThrow ] = createSignal(d.SavingThrows.Charisma);
+
+  let [ strengthThrowProficiency, setStrengthThrowProficiency ] = createSignal(d.SavingThrows.StrengthProficiency);
+  let [ dexterityThrowProficiency, setDexterityThrowProficiency ] = createSignal(d.SavingThrows.DexterityProficiency);
+  let [ constitutionThrowProficiency, setConstitutionThrowProficiency ] = createSignal(d.SavingThrows.ConstitutionProficiency);
+  let [ intelligenceThrowProficiency, setIntelligenceThrowProficiency ] = createSignal(d.SavingThrows.IntelligenceProficiency);
+  let [ wisdomThrowProficiency, setWisdomThrowProficiency ] = createSignal(d.SavingThrows.WisdomProficiency);
+  let [ charismaThrowProficiency, setCharismaThrowProficiency ] = createSignal(d.SavingThrows.CharismaProficiency);
+
+  let [ acrobatics, setAcrobatics ] = createSignal(d.Skills.Acrobatics);
+  let [ animalHandling, setAnimalHandling ] = createSignal(d.Skills.AnimalHandling);
+  let [ arcana, setArcana ] = createSignal(d.Skills.Arcana);
+  let [ athletics, setAthletics ] = createSignal(d.Skills.Athletics);
+  let [ deception, setDeception ] = createSignal(d.Skills.Deception);
+  let [ history, setHistory ] = createSignal(d.Skills.History);
+  let [ insight, setInsight ] = createSignal(d.Skills.Insight);
+  let [ intimidation, setIntimidation ] = createSignal(d.Skills.Intimidation);
+  let [ investigation, setInvestigation ] = createSignal(d.Skills.Investigation);
+  let [ medicine, setMedicine ] = createSignal(d.Skills.Medicine);
+  let [ nature, setNature ] = createSignal(d.Skills.Nature);
+  let [ perception, setPerception ] = createSignal(d.Skills.Perception);
+  let [ performance, setPerformance ] = createSignal(d.Skills.Performance);
+  let [ persuasion, setPersuasion ] = createSignal(d.Skills.Persuasion);
+  let [ religion, setReligion ] = createSignal(d.Skills.Religion);
+  let [ sleightOfHand, setSleightOfHand ] = createSignal(d.Skills.SleightOfHand);
+  let [ stealth, setStealth ] = createSignal(d.Skills.Stealth);
+  let [ survival, setSurvival ] = createSignal(d.Skills.Survival);
+
+  let [ acrobaticsProficiency, setAcrobaticsProficiency ] = createSignal(d.Skills.AcrobaticsProficiency);
+  let [ animalHandlingProficiency, setAnimalHandlingProficiency ] = createSignal(d.Skills.AnimalHandlingProficiency);
+  let [ arcanaProficiency, setArcanaProficiency ] = createSignal(d.Skills.ArcanaProficiency);
+  let [ athleticsProficiency, setAthleticsProficiency ] = createSignal(d.Skills.AthleticsProficiency);
+  let [ deceptionProficiency, setDeceptionProficiency ] = createSignal(d.Skills.DeceptionProficiency);
+  let [ historyProficiency, setHistoryProficiency ] = createSignal(d.Skills.HistoryProficiency);
+  let [ insightProficiency, setInsightProficiency ] = createSignal(d.Skills.InsightProficiency);
+  let [ intimidationProficiency, setIntimidationProficiency ] = createSignal(d.Skills.IntimidationProficiency);
+  let [ investigationProficiency, setInvestigationProficiency ] = createSignal(d.Skills.InvestigationProficiency);
+  let [ medicineProficiency, setMedicineProficiency ] = createSignal(d.Skills.MedicineProficiency);
+  let [ natureProficiency, setNatureProficiency ] = createSignal(d.Skills.NatureProficiency);
+  let [ perceptionProficiency, setPerceptionProficiency ] = createSignal(d.Skills.PerceptionProficiency);
+  let [ performanceProficiency, setPerformanceProficiency ] = createSignal(d.Skills.PerformanceProficiency);
+  let [ persuasionProficiency, setPersuasionProficiency ] = createSignal(d.Skills.PersuasionProficiency);
+  let [ religionProficiency, setReligionProficiency ] = createSignal(d.Skills.ReligionProficiency);
+  let [ sleightOfHandProficiency, setSleightOfHandProficiency ] = createSignal(d.Skills.SleightOfHandProficiency);
+  let [ stealthProficiency, setStealthProficiency ] = createSignal(d.Skills.StealthProficiency);
+  let [ survivalProficiency, setSurvivalProficiency ] = createSignal(d.Skills.SurvivalProficiency);
 
   createEffect(() => {
     d.Name = characterName();
@@ -232,13 +286,15 @@ let InputForm = () => {
     d.AttacksSpellCasting.Weapons[0].AtkBonus = weapon1AtkBonus();
     d.AttacksSpellCasting.Weapons[0].Damage = weapon1Damage();
 
-    d.AttacksSpellCasting.Weapons[1].Name = weapon1Name();
-    d.AttacksSpellCasting.Weapons[1].AtkBonus = weapon1AtkBonus();
-    d.AttacksSpellCasting.Weapons[1].Damage = weapon1Damage();
+    d.AttacksSpellCasting.Weapons[1].Name = weapon2Name();
+    d.AttacksSpellCasting.Weapons[1].AtkBonus = weapon2AtkBonus();
+    d.AttacksSpellCasting.Weapons[1].Damage = weapon2Damage();
 
-    d.AttacksSpellCasting.Weapons[2].Name = weapon1Name();
-    d.AttacksSpellCasting.Weapons[2].AtkBonus = weapon1AtkBonus();
-    d.AttacksSpellCasting.Weapons[2].Damage = weapon1Damage();
+    d.AttacksSpellCasting.Weapons[2].Name = weapon3Name();
+    d.AttacksSpellCasting.Weapons[2].AtkBonus = weapon3AtkBonus();
+    d.AttacksSpellCasting.Weapons[2].Damage = weapon3Damage();
+
+    d.AttacksSpellCasting.Others = attacksSpellCasting();
 
     d.SavingThrows.Charisma = charismaThrow();
     d.SavingThrows.Constitution = constitutionThrow();
@@ -246,6 +302,51 @@ let InputForm = () => {
     d.SavingThrows.Intelligence = intelligenceThrow();
     d.SavingThrows.Strength = strengthThrow();
     d.SavingThrows.Wisdom = wisdomThrow();
+
+    d.SavingThrows.CharismaProficiency = charismaThrowProficiency();
+    d.SavingThrows.ConstitutionProficiency = constitutionThrowProficiency();
+    d.SavingThrows.DexterityProficiency = dexterityThrowProficiency();
+    d.SavingThrows.IntelligenceProficiency = intelligenceThrowProficiency();
+    d.SavingThrows.StrengthProficiency = strengthThrowProficiency();
+    d.SavingThrows.WisdomProficiency = wisdomThrowProficiency();
+
+    d.Skills.AcrobaticsProficiency = acrobaticsProficiency();
+    d.Skills.AnimalHandlingProficiency = animalHandlingProficiency();
+    d.Skills.ArcanaProficiency = arcanaProficiency();
+    d.Skills.AthleticsProficiency = athleticsProficiency();
+    d.Skills.DeceptionProficiency = deceptionProficiency();
+    d.Skills.HistoryProficiency = historyProficiency();
+    d.Skills.InsightProficiency = insightProficiency();
+    d.Skills.IntimidationProficiency = intimidationProficiency();
+    d.Skills.InvestigationProficiency = investigationProficiency();
+    d.Skills.MedicineProficiency = medicineProficiency();
+    d.Skills.NatureProficiency = natureProficiency();
+    d.Skills.PerceptionProficiency = perceptionProficiency();
+    d.Skills.PerformanceProficiency = performanceProficiency();
+    d.Skills.PersuasionProficiency = persuasionProficiency();
+    d.Skills.ReligionProficiency = religionProficiency();
+    d.Skills.SleightOfHandProficiency = sleightOfHandProficiency();
+    d.Skills.StealthProficiency = stealthProficiency();
+    d.Skills.SurvivalProficiency = survivalProficiency();
+
+    d.Skills.Acrobatics = acrobatics();
+    d.Skills.AnimalHandling = animalHandling();
+    d.Skills.Arcana = arcana();
+    d.Skills.Athletics = athletics();
+    d.Skills.Deception = deception();
+    d.Skills.History = history();
+    d.Skills.Insight = insight();
+    d.Skills.Intimidation = intimidation();
+    d.Skills.Investigation = investigation();
+    d.Skills.Medicine = medicine();
+    d.Skills.Nature = nature();
+    d.Skills.Perception = perception();
+    d.Skills.Performance = performance();
+    d.Skills.Persuasion = persuasion();
+    d.Skills.Religion = religion();
+    d.Skills.SleightOfHand = sleightOfHand();
+    d.Skills.Stealth = stealth();
+    d.Skills.Survival = survival();
 
     localStorage.setItem('data', JSON.stringify(d));
   })
@@ -264,7 +365,7 @@ let InputForm = () => {
           <input value={race()} onInput={( el ) => setRace(el.currentTarget.value) } placeholder="Race" />
 
           <div class="tiny-text">Level</div>
-          <input value={level()} onInput={( el ) => parseInt(el.currentTarget.value) !== undefined ? setLevel(parseInt(el.currentTarget.value)) : null }placeholder="Level" />
+          <input value={level()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setLevel(parseInt(el.currentTarget.value)) : null }placeholder="Level" />
         </div>
         <div class="column-2">
           <div class="tiny-text">Background</div>
@@ -274,7 +375,7 @@ let InputForm = () => {
           <input value={alignment()} onInput={( el ) => setAlignment(el.currentTarget.value) } placeholder="Alignment" />
 
           <div class="tiny-text">XP</div>
-          <input value={xp()} onInput={( el ) => parseFloat(el.currentTarget.value) !== undefined ? setXP(parseFloat(el.currentTarget.value)) : null } placeholder="XP" />
+          <input value={xp()} onInput={( el ) => !isNaN(parseFloat(el.currentTarget.value)) ? setXP(parseFloat(el.currentTarget.value)) : null } placeholder="XP" />
         </div>
       </div>
       <br />
@@ -343,33 +444,39 @@ let InputForm = () => {
         <div class="stat">
           Strength<br />
           <input value={strengthThrow()} onInput={( el ) => setStrengthThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ strengthThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setStrengthThrowProficiency(!strengthThrowProficiency())}></div>
         </div>
         <div class="stat">
           Dexterity<br />
           <input value={dexterityThrow()} onInput={( el ) => setDexterityThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ dexterityThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setDexterityThrowProficiency(!dexterityThrowProficiency())}></div>
         </div>
         <div class="stat">
           Constitution<br />
           <input value={constitutionThrow()} onInput={( el ) => setConstitutionThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ constitutionThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setConstitutionThrowProficiency(!constitutionThrowProficiency())}></div>
         </div>
         <div class="stat">
           Intelligence<br />
           <input value={intelligenceThrow()} onInput={( el ) => setIntelligenceThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ intelligenceThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setIntelligenceThrowProficiency(!intelligenceThrowProficiency())}></div>
         </div>
         <div class="stat">
           Wisdom<br />
           <input value={wisdomThrow()} onInput={( el ) => setWisdomThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ wisdomThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setWisdomThrowProficiency(!wisdomThrowProficiency())}></div>
         </div>
         <div class="stat">
           Charisma<br />
           <input value={charismaThrow()} onInput={( el ) => setCharismaThrow(el.currentTarget.value) } style={{ width: '100px' }} /><br />
+          <div class={ charismaThrowProficiency() ? "checkbox checked" : "checkbox" } onClick={() => setCharismaThrowProficiency(!charismaThrowProficiency())}></div>
         </div>
       </div><br />
 
       <div class="row">
         <div class="column-3">
           <div class="tiny-text">Armour Class</div>
-          <input value={armourClass()} onInput={( el ) => parseFloat(el.currentTarget.value) !== undefined ? setArmourClass(parseFloat(el.currentTarget.value)) : null } style={{ width: '100%' }} />
+          <input value={armourClass()} onInput={( el ) => !isNaN(parseFloat(el.currentTarget.value)) ? setArmourClass(parseFloat(el.currentTarget.value)) : null } style={{ width: '100%' }} />
         </div>
         <div class="column-3">
           <div class="tiny-text">Initiative</div>
@@ -377,7 +484,7 @@ let InputForm = () => {
         </div>
         <div class="column-3">
           <div class="tiny-text">Speed</div>
-          <input value={speed()} onInput={( el ) => parseFloat(el.currentTarget.value) !== undefined ? setSpeed(parseFloat(el.currentTarget.value)) : null }  style={{ width: '100%' }} />
+          <input value={speed()} onInput={( el ) => !isNaN(parseFloat(el.currentTarget.value)) ? setSpeed(parseFloat(el.currentTarget.value)) : null }  style={{ width: '100%' }} />
         </div>
       </div><br />
 
@@ -439,6 +546,65 @@ let InputForm = () => {
         </div>
       </div><br />
 
+      <div class="row" style={{ "text-align": "left", margin: 'auto', width: '80%' }}>
+        <div class="column-2">
+          <div class={acrobaticsProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setAcrobaticsProficiency(!acrobaticsProficiency())}></div>
+          <input value={acrobatics()} onInput={( el ) => setAcrobatics(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Acrobatics <span class="sub-text">(Dex)</span><br />
+
+          <div class={animalHandlingProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setAnimalHandlingProficiency(!animalHandlingProficiency())}></div>
+          <input value={animalHandling()} onInput={( el ) => setAnimalHandling(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Animal Handling <span class="sub-text">(Wis)</span><br />
+
+          <div class={arcanaProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setArcanaProficiency(!arcanaProficiency())}></div>
+          <input value={arcana()} onInput={( el ) => setArcana(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Arcana <span class="sub-text">(Int)</span><br />
+
+          <div class={athleticsProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setAthleticsProficiency(!athleticsProficiency())}></div>
+          <input value={athletics()} onInput={( el ) => setAthletics(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Athletics <span class="sub-text">(Str)</span><br />
+
+          <div class={deceptionProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setDeceptionProficiency(!deceptionProficiency())}></div>
+          <input value={deception()} onInput={( el ) => setDeception(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Deception <span class="sub-text">(Cha)</span><br />
+
+          <div class={historyProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setHistoryProficiency(!historyProficiency())}></div>
+          <input value={history()} onInput={( el ) => setHistory(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> History <span class="sub-text">(Int)</span><br />
+
+          <div class={insightProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setInsightProficiency(!insightProficiency())}></div>
+          <input value={insight()} onInput={( el ) => setInsight(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Insight <span class="sub-text">(Wis)</span><br />
+
+          <div class={intimidationProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setIntimidationProficiency(!intimidationProficiency())}></div>
+          <input value={intimidation()} onInput={( el ) => setIntimidation(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Intimidation <span class="sub-text">(Cha)</span><br />
+
+          <div class={investigationProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setInvestigationProficiency(!investigationProficiency())}></div>
+          <input value={investigation()} onInput={( el ) => setInvestigation(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Investigation <span class="sub-text">(Int)</span>
+        </div>
+        <div class="column-2">
+          <div class={medicineProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setMedicineProficiency(!medicineProficiency())}></div>
+          <input value={medicine()} onInput={( el ) => setMedicine(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Medicine <span class="sub-text">(Wis)</span><br />
+
+          <div class={natureProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setNatureProficiency(!natureProficiency())}></div>
+          <input value={nature()} onInput={( el ) => setNature(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Nature <span class="sub-text">(Int)</span><br />
+
+          <div class={perceptionProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setPerceptionProficiency(!perceptionProficiency())}></div>
+          <input value={perception()} onInput={( el ) => setPerception(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Perception <span class="sub-text">(Wis)</span><br />
+
+          <div class={performanceProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setPerformanceProficiency(!performanceProficiency())}></div>
+          <input value={performance()} onInput={( el ) => setPerformance(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Performance <span class="sub-text">(Cha)</span><br />
+
+          <div class={persuasionProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setPersuasionProficiency(!persuasionProficiency())}></div>
+          <input value={persuasion()} onInput={( el ) => setPersuasion(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Persuasion <span class="sub-text">(Cha)</span><br />
+
+          <div class={religionProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setReligionProficiency(!religionProficiency())}></div>
+          <input value={religion()} onInput={( el ) => setReligion(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Religion <span class="sub-text">(Int)</span><br />
+
+          <div  class={sleightOfHandProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setSleightOfHandProficiency(!sleightOfHandProficiency())}></div>
+          <input value={sleightOfHand()} onInput={( el ) => setSleightOfHand(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Sleight of Hand  <span class="sub-text">(Dex)</span><br />
+
+          <div class={stealthProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setStealthProficiency(!stealthProficiency())}></div>
+          <input value={stealth()} onInput={( el ) => setStealth(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Stealth <span class="sub-text">(Dex)</span><br />
+
+          <div class={survivalProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setSurvivalProficiency(!survivalProficiency())}></div>
+          <input value={survival()} onInput={( el ) => setSurvival(el.currentTarget.value)} style={{ width: '50px', 'font-size': '15px' }} /> Survival <span class="sub-text">(Wis)</span>
+        </div>
+      </div><br />
+
       <div>
         <div class="tiny-text">Features and Traits</div>
         <textarea value={featuresTraits()} onInput={( el ) => setFeaturesTraits(el.currentTarget.value)} style={{ height: '200px' }}></textarea>
@@ -463,9 +629,9 @@ let InputForm = () => {
             <input value={weapon2Damage()} onInput={( el ) => setWeapon2Damage(el.currentTarget.value) } />
             <input value={weapon3Damage()} onInput={( el ) => setWeapon3Damage(el.currentTarget.value) } />
           </div>
-        </div>
+        </div><br />
 
-        <textarea value={featuresTraits()} onInput={( el ) => setFeaturesTraits(el.currentTarget.value)} style={{ height: '150px' }}></textarea>
+        <textarea value={attacksSpellCasting()} onInput={( el ) => setAttacksSpellCasting(el.currentTarget.value)} style={{ height: '150px' }}></textarea>
       </div>
 
       <br />

@@ -29,24 +29,24 @@ class AttackSpellCasting{
 }
 
 class Skills{
-  Acrobatics: Number = 0;
-  AnimalHandling: Number = 0;
-  Arcana: Number = 0;
-  Athletics: Number = 0;
-  Deception: Number = 0;
-  History: Number = 0;
-  Insight: Number = 0;
-  Intimidation: Number = 0;
-  Investigation: Number = 0;
-  Medicine: Number = 0;
-  Nature: Number = 0;
-  Perception: Number = 0;
-  Performance: Number = 0;
-  Persuasion: Number = 0;
-  Religion: Number = 0;
-  SleightOfHand: Number = 0;
-  Stealth: Number = 0;
-  Survival: Number = 0;
+  Acrobatics: string = '';
+  AnimalHandling: string = '';
+  Arcana: string = '';
+  Athletics: string = '';
+  Deception: string = '';
+  History: string = '';
+  Insight: string = '';
+  Intimidation: string = '';
+  Investigation: string = '';
+  Medicine: string = '';
+  Nature: string = '';
+  Perception: string = '';
+  Performance: string = '';
+  Persuasion: string = '';
+  Religion: string = '';
+  SleightOfHand: string = '';
+  Stealth: string = '';
+  Survival: string = '';
 
   AcrobaticsProficiency: boolean = false;
   AnimalHandlingProficiency: boolean = false;

@@ -98,3 +98,9 @@ textarea::-webkit-scrollbar{
   transition: 0.1s;
   font-family: 'Rubik', sans-serif;
 }
+
+.sub-text{
+  color: gray;
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+}
