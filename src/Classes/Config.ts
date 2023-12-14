@@ -85,6 +85,7 @@ class SavingThrows{
 }
 
 class Config{
+  Version: string = '0.1';
   Name: string = '';
 
   Class: string = '';
@@ -127,7 +128,7 @@ class Config{
 
   DeathSaves: DeathSaves = new DeathSaves();
 
-  OtherProficienciesLanguages: Array<string> = [];
+  OtherProficienciesLanguages: string = '';
 
   Equipment: Array<string> = [];
   Money: Money = new Money();
@@ -143,7 +144,6 @@ class Config{
   PassiveIntelligenceInvestigation: number = 0;
   PassiveWisdomInsight: number = 0;
 
-  Other: string = '';
   Notes: string = '';
 }
 

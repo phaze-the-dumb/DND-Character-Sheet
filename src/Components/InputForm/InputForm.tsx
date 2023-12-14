@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from 'solid-js';
+import { For, createEffect, createSignal } from 'solid-js';
 
 import './InputForm.css'
 import Config from '../../Classes/Config';
@@ -10,6 +10,9 @@ let InputForm = () => {
 
   let successButtons: Array<HTMLElement> = [];
   let failureButtons: Array<HTMLElement> = [];
+
+  let equipments: Array<HTMLInputElement> = [];
+  let newEquipment: HTMLInputElement;
 
   let selectSuccessButton = ( index: number ) => {
     successButtons[index].classList.toggle('checked');
@@ -23,6 +26,24 @@ let InputForm = () => {
     d.DeathSaves.Failures[index] = !d.DeathSaves.Failures[index];
 
     localStorage.setItem('data', JSON.stringify(d));
+  }
+
+  let editEquipment = ( index: number ) => {
+    let e = equipment();
+    e[index] = equipments[index].value;
+
+    e = e.filter(x => x !== '');
+    setEquipment(e);
+  }
+
+  let addEquipment = () => {
+    let e = equipment();
+    e.push(newEquipment.value);
+
+    e = e.filter(x => x !== '');
+    setEquipment(e);
+
+    newEquipment.value = '';
   }
 
   let downloadConfig = () => {
@@ -55,18 +76,21 @@ let InputForm = () => {
         d.DeathSaves.Failures = data.DeathSaves.Failures;
 
         setCharacterName(data.Name);
+
         setClassName(data.Class);
         setLevel(data.Level);
         setBackground(data.Background);
         setRace(data.Race);
         setAlignment(data.Alignment);
         setXP(data.ExperiencePoints);
+
         setStrength(data.Strength);
         setDexterity(data.Dexterity);
         setConstitution(data.Constitution);
         setIntelligence(data.Intelligence);
         setWisdom(data.Wisdom);
         setCharisma(data.Charisma);
+
         setStrengthMod(data.StrengthMod);
         setDexterityMod(data.DexterityMod);
         setConstitutionMod(data.ConstitutionMod);
@@ -74,52 +98,107 @@ let InputForm = () => {
         setWisdomMod(data.WisdomMod);
         setCharismaMod(data.CharismaMod);
         setInspiration(data.Inspiration);
+
         setProficiencyBonus(data.ProficiencyBonus);
+
         setArmourClass(data.ArmourClass);
         setInitiative(data.Initiative);
         setSpeed(data.Speed);
+
         setPersonalityTraits(data.PersonalityTraits);
         setIdeals(data.Ideals);
         setBonds(data.Bonds);
         setFlaws(data.Flaws);
+
         setHitDice(data.HitDice);
         setHitDiceTotal(data.HitDiceTotal);
         setFeaturesTraits(data.FeaturesTraits);
+
         setCurrentHitPoints(data.HitPoints.CurrentHitPoints);
         setMaximumHitPoints(data.HitPoints.MaximumHitPoints);
+
         setWeapon1Name(data.AttacksSpellCasting.Weapons[0].Name);
         setWeapon1AtkBonus(data.AttacksSpellCasting.Weapons[0].AtkBonus);
         setWeapon1Damage(data.AttacksSpellCasting.Weapons[0].Damage);
+
         setWeapon2Name(data.AttacksSpellCasting.Weapons[1].Name);
         setWeapon2AtkBonus(data.AttacksSpellCasting.Weapons[1].AtkBonus);
         setWeapon2Damage(data.AttacksSpellCasting.Weapons[1].Damage);
+
         setWeapon3Name(data.AttacksSpellCasting.Weapons[2].Name);
         setWeapon3AtkBonus(data.AttacksSpellCasting.Weapons[2].AtkBonus);
         setWeapon3Damage(data.AttacksSpellCasting.Weapons[2].Damage);
+
         setStrengthThrow(data.SavingThrows.Strength);
         setDexterityThrow(data.SavingThrows.Dexterity);
         setConstitutionThrow(data.SavingThrows.Constitution);
         setIntelligenceThrow(data.SavingThrows.Intelligence);
         setWisdomThrow(data.SavingThrows.Wisdom);
         setCharismaThrow(data.SavingThrows.Charisma);
+
         setStrengthThrowProficiency(data.SavingThrows.StrengthProficiency);
         setDexterityThrowProficiency(data.SavingThrows.DexterityProficiency);
         setConstitutionThrowProficiency(data.SavingThrows.ConstitutionProficiency);
         setIntelligenceThrowProficiency(data.SavingThrows.IntelligenceProficiency);
         setWisdomThrowProficiency(data.SavingThrows.WisdomProficiency);
         setCharismaThrowProficiency(data.SavingThrows.CharismaProficiency);
+
         setAttacksSpellCasting(data.AttacksSpellCasting.Others);
-        // setOtherProficienciesLanguages(data.OtherProficienciesLanguages);
-        // setEquipment(data.Equipment);
-        // setMoney(data.Money);
-        // setSkills(data.Skills);
-        // setSavingThrows(data.SavingThrows);
-        // setPassiveWisdomPerception(data.PassiveWisdomPerception);
-        // setPassiveIntelligenceInvestigation(data.PassiveIntelligenceInvestigation);
-        // setPassiveWisdomInsight(data.PassiveWisdomInsight);
-        // setOther(data.Other);
-        // setNotes(data.Notes);
+
+        setOtherProficienciesLanguages(data.OtherProficienciesLanguages);
+        setEquipment(data.Equipment);
+
+        setAcrobatics(data.Skills.Acrobatics);
+        setAnimalHandling(data.Skills.AnimalHandling);
+        setArcana(data.Skills.Arcana);
+        setAthletics(data.Skills.Athletics);
+        setDeception(data.Skills.Deception);
+        setHistory(data.Skills.History);
+        setInsight(data.Skills.Insight);
+        setIntimidation(data.Skills.Intimidation);
+        setInvestigation(data.Skills.Investigation);
+        setMedicine(data.Skills.Medicine);
+        setNature(data.Skills.Nature);
+        setPerception(data.Skills.Perception);
+        setPerformance(data.Skills.Performance);
+        setPersuasion(data.Skills.Persuasion);
+        setReligion(data.Skills.Religion);
+        setSleightOfHand(data.Skills.SleightOfHand);
+        setStealth(data.Skills.Stealth);
+        setSurvival(data.Skills.Survival);
+
+        setAcrobaticsProficiency(data.Skills.AcrobaticsProficiency);
+        setAnimalHandlingProficiency(data.Skills.AnimalHandlingProficiency);
+        setArcanaProficiency(data.Skills.ArcanaProficiency);
+        setAthleticsProficiency(data.Skills.AthleticsProficiency);
+        setDeceptionProficiency(data.Skills.DeceptionProficiency);
+        setHistoryProficiency(data.Skills.HistoryProficiency);
+        setInsightProficiency(data.Skills.InsightProficiency);
+        setIntimidationProficiency(data.Skills.IntimidationProficiency);
+        setInvestigationProficiency(data.Skills.InvestigationProficiency);
+        setMedicineProficiency(data.Skills.MedicineProficiency);
+        setNatureProficiency(data.Skills.NatureProficiency);
+        setPerceptionProficiency(data.Skills.PerceptionProficiency);
+        setPerformanceProficiency(data.Skills.PerformanceProficiency);
+        setPersuasionProficiency(data.Skills.PersuasionProficiency);
+        setReligionProficiency(data.Skills.ReligionProficiency);
+        setSleightOfHandProficiency(data.Skills.SleightOfHandProficiency);
+        setStealthProficiency(data.Skills.StealthProficiency);
+        setSurvivalProficiency(data.Skills.SurvivalProficiency);
+
+        setPassiveWisdomPerception(data.PassiveWisdomPerception);
+        setPassiveIntelligenceInvestigation(data.PassiveIntelligenceInvestigation);
+        setPassiveWisdomInsight(data.PassiveWisdomInsight);
+
+        setNotes(data.Notes);
+
+        setMoneyCP(data.Money.CP);
+        setMoneySP(data.Money.SP);
+        setMoneyEP(data.Money.EP);
+        setMoneyGP(data.Money.GP);
+        setMoneyPP(data.Money.PP);
       } catch(e){
+        console.error(e);
         alert('Invalid Character File. Double check the file, if it is the correct file, it may be corrupted.');
       }
     }
@@ -237,6 +316,22 @@ let InputForm = () => {
   let [ stealthProficiency, setStealthProficiency ] = createSignal(d.Skills.StealthProficiency);
   let [ survivalProficiency, setSurvivalProficiency ] = createSignal(d.Skills.SurvivalProficiency);
 
+  let [ otherProficienciesLanguages, setOtherProficienciesLanguages ] = createSignal(d.OtherProficienciesLanguages);
+
+  let [ equipment, setEquipment ] = createSignal(d.Equipment);
+
+  let [ passiveWisdomPerception, setPassiveWisdomPerception ] = createSignal(d.PassiveWisdomPerception);
+  let [ passiveIntelligenceInvestigation, setPassiveIntelligenceInvestigation ] = createSignal(d.PassiveIntelligenceInvestigation);
+  let [ passiveWisdomInsight, setPassiveWisdomInsight ] = createSignal(d.PassiveWisdomInsight);
+
+  let [ notes, setNotes ] = createSignal(d.Notes);
+
+  let [ moneyCP, setMoneyCP ] = createSignal(d.Money.CP);
+  let [ moneySP, setMoneySP ] = createSignal(d.Money.SP);
+  let [ moneyEP, setMoneyEP ] = createSignal(d.Money.EP);
+  let [ moneyGP, setMoneyGP ] = createSignal(d.Money.GP);
+  let [ moneyPP, setMoneyPP ] = createSignal(d.Money.PP);
+
   createEffect(() => {
     d.Name = characterName();
 
@@ -347,6 +442,21 @@ let InputForm = () => {
     d.Skills.SleightOfHand = sleightOfHand();
     d.Skills.Stealth = stealth();
     d.Skills.Survival = survival();
+
+    d.Equipment = equipment();
+    d.OtherProficienciesLanguages = otherProficienciesLanguages();
+
+    d.PassiveIntelligenceInvestigation = passiveIntelligenceInvestigation();
+    d.PassiveWisdomInsight = passiveWisdomInsight();
+    d.PassiveWisdomPerception = passiveWisdomPerception();
+
+    d.Notes = notes();
+
+    d.Money.CP = moneyCP();
+    d.Money.SP = moneySP();
+    d.Money.EP = moneyEP();
+    d.Money.GP = moneyGP();
+    d.Money.PP = moneyPP();
 
     localStorage.setItem('data', JSON.stringify(d));
   })
@@ -546,6 +656,7 @@ let InputForm = () => {
         </div>
       </div><br />
 
+      <div class="tiny-text">Skills</div>
       <div class="row" style={{ "text-align": "left", margin: 'auto', width: '80%' }}>
         <div class="column-2">
           <div class={acrobaticsProficiency() ? "checkbox checked" : "checkbox"} onClick={() => setAcrobaticsProficiency(!acrobaticsProficiency())}></div>
@@ -605,6 +716,30 @@ let InputForm = () => {
         </div>
       </div><br />
 
+      <div class="tiny-text">Money</div>
+      <div class="row">
+        <div class="column-5">
+          <div class="tiny-text">CP</div>
+          <input value={moneyCP()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setMoneyCP(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-5">
+          <div class="tiny-text">SP</div>
+          <input value={moneySP()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setMoneySP(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-5">
+          <div class="tiny-text">EP</div>
+          <input value={moneyEP()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setMoneyEP(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-5">
+          <div class="tiny-text">GP</div>
+          <input value={moneyGP()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setMoneyGP(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-5">
+          <div class="tiny-text">PP</div>
+          <input value={moneyPP()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setMoneyPP(parseInt(el.currentTarget.value)) : null } />
+        </div>
+      </div>
+
       <div>
         <div class="tiny-text">Features and Traits</div>
         <textarea value={featuresTraits()} onInput={( el ) => setFeaturesTraits(el.currentTarget.value)} style={{ height: '200px' }}></textarea>
@@ -633,6 +768,48 @@ let InputForm = () => {
 
         <textarea value={attacksSpellCasting()} onInput={( el ) => setAttacksSpellCasting(el.currentTarget.value)} style={{ height: '150px' }}></textarea>
       </div>
+
+      <div class="row">
+        <div class="column-3">
+          <div class="tiny-text">Passive Wisdom<br />Perception</div>
+          <input value={passiveWisdomPerception()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setPassiveWisdomPerception(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-3">
+          <div class="tiny-text">Passive Int<br />Investigation</div>
+          <input value={passiveIntelligenceInvestigation()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setPassiveIntelligenceInvestigation(parseInt(el.currentTarget.value)) : null } />
+        </div>
+        <div class="column-3">
+          <div class="tiny-text">Passive Wisdom<br />Insight</div>
+          <input value={passiveWisdomInsight()} onInput={( el ) => !isNaN(parseInt(el.currentTarget.value)) ? setPassiveWisdomInsight(parseInt(el.currentTarget.value)) : null } />
+        </div>
+      </div><br />
+
+      <div class="tiny-text">Other Proficiencies and Languages</div>
+      <textarea value={otherProficienciesLanguages()} onInput={( el ) => setOtherProficienciesLanguages(el.currentTarget.value)} style={{ height: '150px' }}></textarea>
+      <br />
+
+      <div class="equipment">
+        <div class="tiny-text">Equipment</div>
+
+        <div class="equipment-list">
+          <For each={equipment()}>
+            {( item, index ) =>
+              <div class="list-item">
+                <div class="list-icon"></div>
+                <input value={item} ref={( el ) => equipments.push(el) } onChange={() => editEquipment(index()) } />
+              </div>
+            }
+          </For>
+
+          <div class="list-item">
+            <div class="list-icon"></div>
+            <input ref={( el ) => newEquipment = el } onChange={() => addEquipment() } />
+          </div>
+        </div>
+      </div><br />
+
+      <div class="tiny-text">Notes</div>
+      <textarea value={notes()} onInput={( el ) => setNotes(el.currentTarget.value)} style={{ height: '250px' }}></textarea>
 
       <br />
       <div class="button" onClick={() => downloadConfig()}>Save</div>

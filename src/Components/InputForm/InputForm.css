@@ -45,6 +45,10 @@ input{
   width: 25%;
 }
 
+.column-5{
+  width: 20%;
+}
+
 textarea{
   width: 100%;
   border: none;
@@ -103,4 +107,22 @@ textarea::-webkit-scrollbar{
   color: gray;
   font-family: 'Rubik', sans-serif;
   font-size: 12px;
+}
+
+.list-item{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.list-icon{
+  width: 10px;
+  height: 2px;
+  background: black;
+}
+
+.list-item input{
+  font-size: 15px;
 }
